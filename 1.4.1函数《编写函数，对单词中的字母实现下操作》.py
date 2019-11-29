@@ -9,6 +9,8 @@ def upper(x):
     else:
         print("请输入一个英文单词")
         return
+
+
 def lower(x):
     if str(x).isalpha():
         l = str(x).lower()
@@ -17,9 +19,13 @@ def lower(x):
     else:
         print("请输入一个英文单词")
         return
+
+
 def change(x, func):
     c = func(x)
     return c
+
+
 change('apple', upper)
 change('Http', lower)
 
@@ -35,6 +41,8 @@ def convert(x, lower=True):
     else:
         print("请输入lower的正确参数")
         return x
+
+
 convert('table')
 convert('table', lower=False)
 convert('ONE', lower=True)

@@ -5,7 +5,8 @@ s2 = "rust"
 lst = list(s1)
 print(lst)
 # 将“rust”每个字母追加到列表
-lst = lst + list(s2)
+lst.extend(s2)
+# lst = lst + list(s2)
 print(lst)
 # 对列表进行排序
 lst.sort()
