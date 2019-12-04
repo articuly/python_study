@@ -13,9 +13,9 @@ class Rectangle:
     def __setattr__(self, name, value):
         try:
             if name == 'size':
-                self.width, self.length = value
+                self.width, self.length = map(abs, value)
             else:
-                self.__dict__[name] = value
+                self.__dict__[name] = abs(value)
         except TypeError:
             print('size属性需要两个正数作为参数。')
 
@@ -24,8 +24,8 @@ rect = Rectangle()
 rect.width = 3
 rect.length = 4
 print(rect.size)
-print('---')
-rect.size = 30
+print('------')
+rect.size = 30, -40
 print(rect.width)
 print(rect.length)
 print(rect.height)
