@@ -1,5 +1,5 @@
 # coding:utf-8
-def float_range(start, stop, step=1):
+def float_range(start, stop, step=1.0):
     try:
         if step > 0:
             if stop >= start:
@@ -36,3 +36,29 @@ print(f)
 g = float_range('a', 'z', 1)
 print(g)
 
+
+# 补充方法
+def frange(start, stop, step):
+    try:
+        if step > 0:
+            lst = []
+            x = start
+            while x < stop:
+                lst.append(x)
+                x += step
+            return lst
+        elif step < 0:
+            lst = []
+            x = start
+            while x > stop:
+                lst.append(x)
+                x += step
+            return lst
+        else:
+            return '无法创建等差数列，请将step参数设置为非零的值。'
+    except TypeError:
+        return '函数所有参数必须是数字。'
+
+
+h = frange(19.6, 9.8, -1.1)
+print(h)

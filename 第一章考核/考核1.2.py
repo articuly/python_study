@@ -6,3 +6,9 @@ score.remove(min(score))
 # 计算最终得分，保留一位小数
 s = round(sum(score) / len(score), 1)
 print('歌手的最终得分是{0}'.format(s))
+
+# 补充方法
+score.sort()
+min, *sco, max = score
+avg = round(sum(sco) / len(sco), 1)
+print(avg)
