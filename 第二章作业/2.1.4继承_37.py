@@ -21,8 +21,7 @@ class SchoolKid:
 
 class ExaggeratngKid(SchoolKid):
     def __init__(self, name, age):
-        self.name = name
-        self.age = age
+        super().__init__(name, age)
 
     def get_age(self):
         return '{0} has grown up to {1}.'.format(self.name, self.age + 2)
