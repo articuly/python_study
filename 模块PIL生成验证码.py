@@ -24,7 +24,7 @@ height = 60
 image = Image.new('RGB', (width, height), (255, 255, 255))
 
 # 创建Font对象
-font = ImageFont.truetype('C:/Windows/Fonts/Arial.ttf', 36)
+font = ImageFont.truetype('C:/Windows/Fonts/Arial.ttf', 36) # Windows路经
 
 # 创建Draw对象
 draw = ImageDraw.Draw(image)

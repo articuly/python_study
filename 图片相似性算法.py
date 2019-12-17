@@ -13,7 +13,7 @@ def show_pic(image):
 
 # 显示图片中人脸的数据
 def find_face(image):
-    face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_alt2.xml")
+    face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_alt2.xml") # 参考pypi说明
     # print(face_cascade.empty())
     face = face_cascade.detectMultiScale(
         image,
