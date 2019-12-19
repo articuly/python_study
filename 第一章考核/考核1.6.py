@@ -24,7 +24,11 @@ print(c)
 # 补充方法
 def fact(n):
     result = 1
-    while n < 1:
+    while n > 1:
         result = result * n
         n -= 1
     return result
+
+
+d = fact(10)
+print(d)
