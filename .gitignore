@@ -102,6 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-!/.gitignore
-!/.vscode/
+/.gitignore
+/.vscode
 /idea
