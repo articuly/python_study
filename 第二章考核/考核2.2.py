@@ -32,3 +32,22 @@ print(next(c))
 print(next(c))
 print(next(c))
 d = Countdown('ll')
+
+
+# 补充方法
+class ReverseRange:
+    def __init__(self, n):
+        self.n = n
+
+    def __next__(self):
+        if self.n == 0:
+            raise StopIteration
+        self.n -= 1
+        return self.n
+
+    def __iter__(self):
+        return self
+
+
+for i in ReverseRange(11):
+    print(i)

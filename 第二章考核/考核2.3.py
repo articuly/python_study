@@ -24,3 +24,19 @@ c = Quote('杜甫')
 print(c)
 d = Quote('苏轼')
 print(d)
+
+
+# 参考答案
+class Proverb:
+    def __init__(self, name, word):
+        self.name = name
+        self.word = word
+
+    def __repr__(self):
+        return "{0.name}: {0.word}".format(self)
+
+    __str__ = __repr__
+
+
+ziyue = Proverb("子曰", "中午不睡，下午崩溃")
+print(ziyue)
