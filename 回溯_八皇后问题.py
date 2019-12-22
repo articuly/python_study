@@ -8,7 +8,8 @@ def is_conflict(solution, newpos):
 
 
 def play(row=0, solution=[]):
-    checker = 8
+    global checker
+    checker = 8  # 修改些变量可改变棋盘大小
     # 从第一行开始
     if row == checker:
         yield solution
@@ -26,7 +27,7 @@ for i in play():
     print(i)
     for chess in i:
         index=chess[1]
-        print('○'*index,'※','○'*(7-index),sep='')
+        print('○'*index,'※','○'*(checker-1-index),sep='')
     print('~'*30)
 print(c)
 

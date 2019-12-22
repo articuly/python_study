@@ -12,3 +12,15 @@ for item in records:
 
 print(age_list)
 print(name_list)
+
+# 补充方法
+age_lst = []
+name_lst = []
+for tag, *tags in records:  # ①
+    if tag == "age":
+        age_lst.append(tags)
+    elif tag == "name":
+        name_lst.append(tags)
+
+print(age_lst)
+print(name_lst)

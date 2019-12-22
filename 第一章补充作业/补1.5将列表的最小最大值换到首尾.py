@@ -10,11 +10,13 @@ lst[lst.index(a)], lst[lst.index(b)] = lst[0], lst[-1]
 lst[0], lst[-1] = a, b
 print(lst)
 
+
 def changelist(lst):
     a, b = min(lst), max(lst)
-    c, d = lst[0], lst[-1]
     lst[lst.index(a)], lst[lst.index(b)] = lst[0], lst[-1]
     lst[0], lst[-1] = a, b
     return lst
-c = changelist([4, 9, 12, 0, 8, 15, 3, 11, 7, 9])
-print(c)
+
+
+cl = changelist([4, 9, 12, 0, 8, 15, 3, 11, 7, 9])
+print(cl)
