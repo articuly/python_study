@@ -1,8 +1,6 @@
 # coding:utf-8
 # 用至少2种方法实现斐波那契数列
-
-
-# 用for循环的方法，改进为列表解析
+# 用for循环加列表解析的方法，改进为列表解析
 def fib(n):
     if n == 1:
         return [0]
@@ -41,11 +39,11 @@ class Fibs:
         return self
 
     def __next__(self):
-        fi = self.a
-        if fi > self.maxi:
+        f = self.a
+        if f > self.maxi:
             raise StopIteration
         self.a, self.b = self.b, self.a + self.b
-        return fi
+        return f
 
 
 fibs = Fibs(100000)

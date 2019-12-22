@@ -1,4 +1,5 @@
 # coding:utf-8
+# 查找是否存在特殊字符
 import re
 
 
