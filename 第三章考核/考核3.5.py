@@ -6,7 +6,8 @@ def fib(n):
         return [0]
     else:
         lst = [0, 1]
-        [lst.append(lst[-1] + lst[-2]) for i in range(n - 2)]
+        for i in range(n - 2):
+            lst.append(lst[-1] + lst[-2])
         return lst
 
 

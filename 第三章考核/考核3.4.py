@@ -27,3 +27,10 @@ b = fact('abc')
 print(b)
 print('-' * 50)
 c = fact(20)
+
+
+# 补充方法
+def compute(n):
+    n = math.factorial(n)
+    ans = sum(int(c) for c in str(n))
+    return ans

@@ -16,10 +16,7 @@ class MyString:
         else:
             new_lst = []
             for i in self.lst:
-                if i.isalpha():
-                    new_lst.append(i.upper())
-                else:
-                    new_lst.append(i)
+                new_lst.append(i.upper())
             print('以大写形式输出其中的字母：', new_lst)
 
 

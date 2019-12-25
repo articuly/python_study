@@ -3,7 +3,7 @@ import logging
 
 FORMAT = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
 logging.basicConfig(format=FORMAT)
-d = {'clientiop': '192.168.0.1', 'user': 'LSL'}
+d = {'clientip': '192.168.0.1', 'user': 'LSL'}
 logging.debug('debug log.', extra=d)
 logging.info('info log.', extra=d)
 logging.warning('warning log.', extra=d)
