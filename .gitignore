@@ -114,3 +114,4 @@ venv.bak/
 .idea/python_study.iml
 .idea/vcs.xml
 .idea/webServers.xml
+/test.log
