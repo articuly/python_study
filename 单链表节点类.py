@@ -11,7 +11,7 @@ class Node:
         return self.next
 
     def set_data(self, new_data):
-        self.data = new_node
+        self.data = new_data
 
 
 class LinkedList:
@@ -27,18 +27,17 @@ class LinkedList:
         while head is not None:
             current, head = head, head.next
             yield current
-            # print(current.data)
 
     def insert_head(self, node):
-        self.head, node.next = node, self.head
         self.length += 1
+        self.head, node.next = node, self.head
 
     def pop_head(self):
         head = self.head
         if self.head is not None:
             self.head = self.head.next
+            self.length -= 1
         return head
-        self.length -= 1
 
     def append_node(self, node):
         current = self.head
@@ -51,48 +50,55 @@ class LinkedList:
         current = self.head
         while current.next.next is not None:
             current = current.next
-        return current.next
-        current.next = None
+        node, current.next = current.next, None
         self.length -= 1
+        return node
 
     def insert(self, index, new_node):
-        self.length += 1
         if self.head is None or index < 1:
             self.head, new_node.next = new_node, self.head
         else:
             current = self.head
-        while index > 1 and current.next is not None:
-            current = current.next
-            index -= 1
-        current.next, new_node.next = new_node, current.next
+            while index > 1 and current.next is not None:
+                current = current.next
+                index -= 1
+            new_node.next, current.next = current.next, new_node
+            self.length += 1
 
     def remove(self, index):
-        self.length -= 1
         if self.head is Node or index < 1:
             return None
         else:
             current = self.head
-        while index > 1 and current.next is not None:
-            current = current.next
-            index -= 1
-        current.next = current.next.next
+            if index < len(self):
+                while index > 1 and current.next is not None:
+                    current = current.next
+                    index -= 1
+                self.length -= 1
+                node, current.next = current.next, current.next.next
+                return node
+            else:
+                raise IndexError('out of index range')
 
 
-ll = LinkedList()
-for i in range(10):
-    node = Node(i)
-    ll.insert_head(node)
-print(len(ll))
-print([node.data for node in ll])
-new_node = Node('new')
-ll.append_node(new_node)
-print([node.data for node in ll])
-d = ll.pop_head()
-print(d.data)
-e = ll.pop_end()
-print(e.data)
-print([node.data for node in ll])
-ll.insert(3, Node('oh!'))
-print([node.data for node in ll])
-ll.remove(4)
-print([node.data for node in ll])
+def test_LinkedList():
+    import pytest
+    ll = LinkedList()
+    assert ll.head == None
+    for i in range(5):
+        node = Node(i)
+        ll.insert_head(node)
+    assert len(ll) == 5
+    assert [node.data for node in ll] == [4, 3, 2, 1, 0]
+    ll.append_node(Node('new'))
+    assert [node.data for node in ll] == [4, 3, 2, 1, 0, 'new']
+    assert ll.pop_end().data == 'new'
+    assert [node.data for node in ll] == [4, 3, 2, 1, 0]
+    assert ll.pop_head().data == 4
+    assert [node.data for node in ll] == [3, 2, 1, 0]
+    ll.insert(2, Node('oh!'))
+    assert [node.data for node in ll] == [3, 2, 'oh!', 1, 0]
+    assert ll.remove(3).data == 1
+    with pytest.raises(IndexError) as excinfo:
+        ll.remove(4)
+    assert 'out' in str(excinfo.value)
