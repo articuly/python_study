@@ -13,6 +13,9 @@ class Node:
     def set_data(self, new_data):
         self.data = new_data
 
+    def set_next(self, new_next):
+        self.next = new_next
+
 
 class LinkedList:
     def __init__(self):
@@ -27,12 +30,13 @@ class LinkedList:
         while head is not None:
             current, head = head, head.next
             yield current
+            # print(current.data)
 
     def insert_head(self, node):
         self.length += 1
         self.head, node.next = node, self.head
 
-    def pop_head(self):
+    def pop_first(self):
         head = self.head
         if self.head is not None:
             self.head = self.head.next
@@ -66,7 +70,7 @@ class LinkedList:
             self.length += 1
 
     def remove(self, index):
-        if self.head is Node or index < 1:
+        if self.head is None or index < 1:
             return None
         else:
             current = self.head
@@ -80,6 +84,16 @@ class LinkedList:
             else:
                 raise IndexError('out of index range')
 
+    def search(self,data):
+        current=self.head
+        index=0
+        while current.next is not None:
+            if current.data==data:
+                return index
+            else:
+                index+=1
+                current=current.next
+        return -1 # 没的找到值的索引
 
 def test_LinkedList():
     import pytest
@@ -94,7 +108,7 @@ def test_LinkedList():
     assert [node.data for node in ll] == [4, 3, 2, 1, 0, 'new']
     assert ll.pop_end().data == 'new'
     assert [node.data for node in ll] == [4, 3, 2, 1, 0]
-    assert ll.pop_head().data == 4
+    assert ll.pop_first().data == 4
     assert [node.data for node in ll] == [3, 2, 1, 0]
     o = Node('oh!')
     ll.insert(2, o)

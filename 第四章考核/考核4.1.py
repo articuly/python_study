@@ -1,4 +1,5 @@
 # coding:utf-8
+# 参考单链表结构实现一个双链表
 class Node:
     def __init__(self, data, next=None, prev=None):
         self.data = data
@@ -127,34 +128,19 @@ class Double_LinkedList:
         return -1  # 没的找到值的索引
 
 
-def test_Double_LinkedList():
-    import pytest
-    dll = Double_LinkedList()
-    assert dll.head == None
-    for i in range(5):
-        node = Node(i)
-        dll.insert_head(node)
-    assert len(dll) == 5
-    assert [node.data for node in dll] == [4, 3, 2, 1, 0]
-    dll.append_node(Node('new'))
-    assert [node.data for node in dll] == [4, 3, 2, 1, 0, 'new']
-    assert dll.pop_end().data == 'new'
-    assert [node.data for node in dll] == [4, 3, 2, 1, 0]
-    assert dll.pop_head().data == 4
-    assert [node.data for node in dll] == [3, 2, 1, 0]
-    o = Node('oh!')
-    dll.insert(2, o)
-    assert [node.data for node in dll] == [3, 2, 'oh!', 1, 0]
-    assert dll.remove(3).data == 1
-    assert [node.data for node in dll] == [3, 2, 'oh!', 0]
-    with pytest.raises(IndexError) as excinfo:
-        dll.remove(4)
-    assert 'out' in str(excinfo.value)
-    assert Node('oh!').data == 'oh!'
-    a, b, c = Node(3), Node(2), Node(1)
-    a.next = b
-    b.next = c
-    c.prev = b
-    b.prev = a
-    assert a.next.data == 2
-    assert b.prev.data == 3
+dll = Double_LinkedList()
+for i in range(5):
+    node = Node(i)
+    dll.insert_head(node)
+print(len(dll))
+print([node.data for node in dll])
+dll.append_node(Node('new'))
+dll.insert_head(Node('first'))
+print([node.data for node in dll])
+dll.pop_end()
+dll.pop_first()
+print([node.data for node in dll])
+dll.insert(2, Node(99))
+dll.remove(5)
+print([node.data for node in dll])
+print(dll.search(3))
