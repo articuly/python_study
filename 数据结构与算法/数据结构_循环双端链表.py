@@ -45,11 +45,11 @@ class Cycle_Double_Linkedlist:
         for node in self.iter_node():
             yield node.value
 
-    def append(self, value):
+    def append(self, value):  # O(1), 你发现一般不用 for 循环的就是 O(1)，有限个步骤
         if self.maxsize is not None and len(self) > self.maxsize:
             raise Exception('full of circle double linkedlist')
         node = Node(value=value)
-        tailnode = self.tailnode()
+        tailnode = self.tailnode() or self.root
         tailnode.next = node
         node.prev = tailnode
         node.next = self.root
@@ -72,7 +72,7 @@ class Cycle_Double_Linkedlist:
             self.headnode().prev = node
         self.length += 1
 
-    def remove(self, node):
+    def remove(self, node):  # O(1)，传入node 而不是 value 我们就能实现 O(1) 删除
         if node is self.root:
             return
         else:
