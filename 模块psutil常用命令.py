@@ -29,7 +29,7 @@ print('*' * 100)
 
 # 显示进程信息
 print(psutil.pids())  # 所有进程ID
-p = psutil.Process(132)
+p = psutil.Process(32)
 print(p.name())  # 进程名称
 print(p.exe())  # 进程exe路径
 print(p.cwd())  # 进程工作目录
